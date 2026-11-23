@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#120b10">
+  <title>SAMARKAND DATE</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="mark">SD</div>
+      <div>
+        <p class="eyebrow">SAMARKAND · MINI APP</p>
+        <h1>Немного о тебе</h1>
+      </div>
+    </header>
+
+    <section class="intro card">
+      <span class="spark">✦</span>
+      <h2>Идея хорошей встречи начинается с предпочтений</h2>
+      <p>Ответь на вопросы о местах, атмосфере и планах в Самарканде. Здесь нет правильных ответов — выбирай то, что нравится именно тебе.</p>
+    </section>
+
+    <section class="privacy card">
+      <h3>Перед началом</h3>
+      <p>Твои ответы и Telegram ID будут отправлены владельцу бота. Не указывай адрес, пароль, документы или другую личную информацию. Отправка добровольная.</p>
+      <label class="consent"><input type="checkbox" id="consent"> <span>Я понимаю, кому будут отправлены мои ответы, и согласна продолжить.</span></label>
+    </section>
+
+    <section class="lock card">
+      <label for="accessCode">Защитный код</label>
+      <div class="code-row">
+        <input id="accessCode" type="password" maxlength="100" placeholder="Введи код доступа" autocomplete="off">
+        <button id="unlock" class="secondary">Открыть</button>
+      </div>
+      <p class="hint" id="lockHint">Сначала подтверди согласие, затем введи код.</p>
+    </section>
+
+    <form id="survey" class="card hidden">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Твои ответы</span><span id="progressText">0 / 12</span></div>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+
+      <div class="question" data-q="q1">
+        <h3>01. Какой формат встречи тебе ближе?</h3>
+        <div class="options">
+          <label><input type="radio" name="q1" value="Уютное кафе"><span>Уютное кафе</span></label>
+          <label><input type="radio" name="q1" value="Прогулка по городу"><span>Прогулка по городу</span></label>
+          <label><input type="radio" name="q1" value="Кафе + прогулка"><span>Кафе + прогулка</span></label>
+          <label><input type="radio" name="q1" value="Что-нибудь необычное"><span>Что-нибудь необычное</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q2">
+        <h3>02. Куда тебе было бы интереснее сходить в Самарканде?</h3>
+        <div class="options">
+          <label><input type="radio" name="q2" value="Кофейня"><span>Кофейня</span></label>
+          <label><input type="radio" name="q2" value="Ресторан"><span>Ресторан</span></label>
+          <label><input type="radio" name="q2" value="Место с красивым видом"><span>Место с красивым видом</span></label>
+          <label><input type="radio" name="q2" value="Исторический центр"><span>Исторический центр</span></label>
+          <label><input type="radio" name="q2" value="Парк или спокойное место"><span>Парк или спокойное место</span></label>
+          <label><input type="radio" name="q2" value="Предложи свой вариант"><span>Предложи свой вариант</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q3">
+        <h3>03. Какая атмосфера тебе нравится?</h3>
+        <div class="options">
+          <label><input type="radio" name="q3" value="Тихая и уютная"><span>Тихая и уютная</span></label>
+          <label><input type="radio" name="q3" value="Современная и стильная"><span>Современная и стильная</span></label>
+          <label><input type="radio" name="q3" value="С музыкой и движением"><span>С музыкой и движением</span></label>
+          <label><input type="radio" name="q3" value="На свежем воздухе"><span>На свежем воздухе</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q4">
+        <h3>04. Какую кухню ты предпочитаешь?</h3>
+        <div class="options">
+          <label><input type="radio" name="q4" value="Итальянскую"><span>Итальянскую</span></label>
+          <label><input type="radio" name="q4" value="Азиатскую"><span>Азиатскую</span></label>
+          <label><input type="radio" name="q4" value="Узбекскую"><span>Узбекскую</span></label>
+          <label><input type="radio" name="q4" value="Европейскую"><span>Европейскую</span></label>
+          <label><input type="radio" name="q4" value="Люблю пробовать разное"><span>Люблю пробовать разное</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q5">
+        <h3>05. Что выберешь из напитков?</h3>
+        <div class="options">
+          <label><input type="radio" name="q5" value="Кофе"><span>Кофе</span></label>
+          <label><input type="radio" name="q5" value="Чай"><span>Чай</span></label>
+          <label><input type="radio" name="q5" value="Лимонад или сок"><span>Лимонад или сок</span></label>
+          <label><input type="radio" name="q5" value="Молочный коктейль"><span>Молочный коктейль</span></label>
+          <label><input type="radio" name="q5" value="Другое"><span>Другое</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q6">
+        <h3>06. В какое время удобнее встретиться?</h3>
+        <div class="options">
+          <label><input type="radio" name="q6" value="Утром"><span>Утром</span></label>
+          <label><input type="radio" name="q6" value="Днём"><span>Днём</span></label>
+          <label><input type="radio" name="q6" value="Ближе к вечеру"><span>Ближе к вечеру</span></label>
+          <label><input type="radio" name="q6" value="Вечером, в подходящее время"><span>Вечером, в подходящее время</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q7">
+        <h3>07. Какой вариант прогулки интереснее?</h3>
+        <div class="options">
+          <label><input type="radio" name="q7" value="Регистан и исторические места"><span>Регистан и исторические места</span></label>
+          <label><input type="radio" name="q7" value="Парки и зелёные места"><span>Парки и зелёные места</span></label>
+          <label><input type="radio" name="q7" value="Красивые улицы и фотозоны"><span>Красивые улицы и фотозоны</span></label>
+          <label><input type="radio" name="q7" value="Без долгой прогулки"><span>Без долгой прогулки</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q8">
+        <h3>08. Какой бюджет на одного человека комфортен?</h3>
+        <div class="options">
+          <label><input type="radio" name="q8" value="До 50 000 сум"><span>До 50 000 сум</span></label>
+          <label><input type="radio" name="q8" value="50 000–100 000 сум"><span>50 000–100 000 сум</span></label>
+          <label><input type="radio" name="q8" value="100 000–200 000 сум"><span>100 000–200 000 сум</span></label>
+          <label><input type="radio" name="q8" value="Лучше решить вместе"><span>Лучше решить вместе</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q9">
+        <h3>09. Какую музыку ты предпочитаешь?</h3>
+        <div class="options">
+          <label><input type="radio" name="q9" value="Поп"><span>Поп</span></label>
+          <label><input type="radio" name="q9" value="R&B"><span>R&amp;B</span></label>
+          <label><input type="radio" name="q9" value="Рэп"><span>Рэп</span></label>
+          <label><input type="radio" name="q9" value="Спокойная музыка"><span>Спокойная музыка</span></label>
+          <label><input type="radio" name="q9" value="Без разницы"><span>Без разницы</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q10">
+        <h3>10. Какой формат общения тебе комфортнее?</h3>
+        <div class="options">
+          <label><input type="radio" name="q10" value="Спокойно поговорить"><span>Спокойно поговорить</span></label>
+          <label><input type="radio" name="q10" value="Шутки и весёлое общение"><span>Шутки и весёлое общение</span></label>
+          <label><input type="radio" name="q10" value="Узнавать друг друга постепенно"><span>Узнавать друг друга постепенно</span></label>
+          <label><input type="radio" name="q10" value="Пусть всё будет естественно"><span>Пусть всё будет естественно</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q11">
+        <h3>11. Сколько времени ты хотела бы выделить на встречу?</h3>
+        <div class="options">
+          <label><input type="radio" name="q11" value="Около часа"><span>Около часа</span></label>
+          <label><input type="radio" name="q11" value="1–2 часа"><span>1–2 часа</span></label>
+          <label><input type="radio" name="q11" value="2–3 часа"><span>2–3 часа</span></label>
+          <label><input type="radio" name="q11" value="Посмотрим по настроению"><span>Посмотрим по настроению</span></label>
+        </div>
+      </div>
+
+      <div class="question" data-q="q12">
+        <h3>12. Есть ли пожелания или идеи от тебя?</h3>
+        <textarea name="q12" maxlength="500" placeholder="Можешь написать свой вариант (необязательно)"></textarea>
+      </div>
+
+      <button type="submit" class="primary submit">Отправить ответы</button>
+      <p class="hint center">Первые 11 вопросов обязательны. Последний — по желанию.</p>
+    </form>
+    <div id="result" class="result hidden"></div>
+    <footer>Сделано с заботой · SAMARKAND DATE</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
